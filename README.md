@@ -1,2 +1,1 @@
-# 100-days
- 
+# 100-DaysChallenge
