@@ -1,0 +1,69 @@
+Codechef (Project Her 1.0) 
+Weird Fibonacci prblm code: PH104
+(SBM)
+In order to celebrate Women's day, Stella started playing with the Fibonacci series and wanted to make her own version of it, the Wierd Fibonacci series.
+Given a normal Fibonacci series upto N, i.e., A1, A2, A3, ..., AN-1, AN.
+The resulting Weird Fibonacci Sequence from above sequence is A1, AN, A2, AN-1, ..., AN/2.
+For a given N, print the first M numbers for this series.
+As the numbers can be very big, print the number modulo 1000000007.
+
+Input:
+First line will contain T, number of testcases. Then the testcases follow.
+Each testcase contains of a single line of input, two integers N,M.
+
+Output:
+For each testcase, output M space-separated integers in the order described above, all in a single line.
+
+Constraints
+1≤T≤10000
+1≤M≤10
+1≤N≤106
+Sample Input:
+1
+10 6
+Sample Output:
+0 34 1 21 1 13
+Explanation:
+For N=10 Fibonacci series would be: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+And is the above order it would be: [0, 34, 1, 21, 1, 13, 2, 8, 3, 5]
+To print first M numbers: 0 34 1 21 1 13
+
+Solution -> 
+
+#include<bits/stdc++.h>
+typedef long long int ll;
+#define mod 1000000007
+using namespace std;
+
+int main(){
+	ios_base::sync_with_stdio(false);
+ 	cin.tie(NULL);cout.tie(NULL);
+ 	ll a[1000000];
+    ll p1=1,p2=1;
+    a[0] = 0;
+    a[1] = 1;
+    a[2] = 1;
+    for(ll i=3;i<1000000;i++){
+        a[i] = (p1 + p2) % mod;
+        p1 = p2;
+        p2 = a[i] % mod;
+    }
+    
+	ll t;cin>>t;while(t--){
+    ll n,m;
+    cin>>n>>m;
+    
+    
+    ll j=0,f=n-1;
+    for(ll i=0;i<n;i++){
+        if(m==0){break;}
+        else cout<<(a[i] % mod)<<" ";m--;
+        if(m==0){break;}
+        cout<<(a[f] % mod)<<" ";m--;
+        f--;
+    }
+    
+	cout<<"\n";
+}
+return 0;
+}
