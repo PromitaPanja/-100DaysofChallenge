@@ -1,0 +1,53 @@
+Codechef march long challenge div 3 (2)
+(SBM)
+Chef and Groups
+There are N seats in a row. You are given a string S with length N; for each valid i, the i-th character of S is '0' if the i-th seat is empty or '1' if there is someone sitting in that seat.
+
+Two people are friends if they are sitting next to each other. Two friends are always part of the same group of friends. Can you find the total number of groups?
+Input
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of each test case contains a single string S.
+Output
+For each test case, print a single line containing one integer ― the number of groups.
+
+Constraints
+1≤T≤50
+1≤N≤105
+Example Input
+4
+000
+010
+101
+01011011011110
+Example Output
+0
+1
+2
+4
+
+Solution->
+#include<bits/stdc++.h>
+typedef long long int ll;
+#define mod 1000000007
+using namespace std;
+
+int main(){
+	ios_base::sync_with_stdio(false);
+ 	cin.tie(NULL);cout.tie(NULL);
+	ll t;cin>>t;while(t--){
+    string s;
+    cin>>s;
+    ll g=0;
+    for(ll i=0;i<s.size();i++){
+        if(s[i]=='1'){
+            while(s[i]=='1'){
+                i++;
+            }
+            g++;
+            i--;
+        }
+    }
+	cout<<g<<endl;
+}
+return 0;
+}
