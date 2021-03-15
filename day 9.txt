@@ -1,0 +1,75 @@
+Hackerearth c++ interview prep 2questions 1:30 hrs
+1)Sum of sum digits
+
+Monk recursively finds the sum of digits till it becomes a single digit number. He calls this as Digit-value of a number. He got the tasks as an array A of N different numbers. Then asks him Q queries. In each query, he has to form a set of K no.s from the array and fund the sum of digit values of those K no.s. This sum is called the values of that set.
+The query are of two types:
+1 K - Monk must output the max value of set of size K, that can be obtained as described above.
+2 K - Monk must output the min value of set of size K, that can be obtained as described above.
+
+input:
+n=5 q=5
+13 345 193 44444 100303
+q1 1 k 2
+1 4 
+2 1
+2 4
+1 5
+output:
+11
+18
+2
+13
+20
+
+
+
+Solution ->
+#include <bits/stdc++.h>
+typedef long long int ll;
+
+using namespace std;
+
+
+ll solve(ll a){
+    ll ans = 0;
+    while(a>9){
+        ans += a%10;
+        a/=10;
+    }
+    ans+=a;
+    return ans;
+}
+
+int main(){
+    ll n,q;
+    cin>>n>>q;
+    ll a[n];
+    for(ll i=0;i<n;i++){
+        ll b ;
+        cin>>b;
+        a[i] = solve(b);
+        while(a[i]>9){
+            a[i] = solve(a[i]);
+        }
+    }
+    sort(a,a+n);
+    while(q--){
+        int t;
+        ll k;
+        cin>>t>>k;
+        ll ans=0;
+        if(t==1){
+            for(ll i=n-1;i>=(n-k);i--){
+                ans+=a[i];
+            }
+        }
+        else{
+            for(ll i=0;i<k;i++){
+                ans+=a[i];
+            }
+        }
+        cout<<ans<<"\n";
+    }
+
+    return 0;
+}
