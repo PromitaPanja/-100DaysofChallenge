@@ -1,0 +1,59 @@
+hackerearth practice problem 
+A) Equalize strings
+
+Problem-
+You are given two binary strings S and T of the same length N. Your task is to make both the strings equal. Perform the following operation on string S:
+
+Select any substring of S then flip all 1's to 0 and flip all 0's to 1 of that substring.
+
+Print the minimum number of operations you have to perform to make them equal.
+
+Input format
+* The first line contains a single integer N (1<=N<=1e5) size of each string
+* The second line contains a string S of length N. 
+* The third line contains a string T of length N. 
+
+Output format
+Print a single integer denoting the minimum number of operations required to make both the strings equal.
+
+Constraints
+1<=N<=1e5
+
+Sample Input
+2
+10
+11
+Sample Output
+1
+Time Limit: 1
+Memory Limit: 256
+Source Limit:
+Explanation
+You just need to flip second 0 to 1. 
+So answer is 1.
+
+Solution->
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n;
+	cin >> n;										// Reading input from STDIN
+	//cout << "Input number is " << num << endl;
+	string s,t;
+	cin>>s;
+	cin>>t;
+	int c=0;
+	for(int i=0;i<n;i++){
+		if(s[i]!=t[i]){
+			while(s[i]!=t[i]){
+				i++;
+			}
+			c++;
+		}
+	}
+	cout<<c;
+}
+
