@@ -1,0 +1,110 @@
+Codechef div 3 march cook-off 2021
+1) Weight Balance WEIGHTBL
+
+No play and eating all day makes your belly fat. This happened to Chef during the lockdown. His weight before the lockdown was w1 kg (measured on the most accurate hospital machine) and after M months of lockdown, when he measured his weight at home (on a regular scale, which can be inaccurate), he got the result that his weight was w2 kg (w2>w1).
+
+Scientific research in all growing kids shows that their weights increase by a value between x1 and x2 kg (inclusive) per month, but not necessarily the same value each month. Chef assumes that he is a growing kid. Tell him whether his home scale could be giving correct results.
+
+Input
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of each test case contains five space-separated integers w1, w2, x1, x2 and M.
+
+Output
+For each test case, print a single line containing the integer 1 if the result shown by the scale can be correct or 0 if it cannot.
+
+Constraints
+1≤T≤105
+1≤w1<w2≤100
+0≤x1≤x2≤10
+1≤M≤10
+
+Example Input
+5
+1 2 1 2 2
+2 4 1 2 2
+4 8 1 2 2
+5 8 1 2 2
+1 100 1 2 2
+Example Output
+0
+1
+1
+1
+0
+
+Solution-> 
+#include<bits/stdc++.h>
+typedef long long int ll;
+#define mod 1000000007
+using namespace std;
+#define IOS ios::sync_with_stdio(0);
+#define endl "\n"
+
+int main(){
+    IOS;
+    ll t;cin>>t;
+    for(ll i=1;i<=t;i++){ //test-cases count
+    ll w1,w2,x1,x2,m;
+    cin>>w1>>w2>>x1>>x2>>m;
+    ll mini = w1 + m*x1;
+    ll maxi = w1 + m*x2;
+    if(w2>=mini && w2<=maxi){
+        cout<<1;
+    }
+    else{
+        cout<<0;
+    }
+    cout<<endl;
+}
+return 0;
+}
+
+
+
+
+2) Pawri Meme PAWRI
+Lately, Chef has been inspired by the "pawri" meme. Therefore, he decided to take a string S and change each of its substrings that spells "party" to "pawri". Find the resulting string.
+Constraints
+1≤T≤10
+1≤|S|≤105
+S contains only lowercase English letters
+Example Input
+3
+part
+partypartiparty
+yemaihuyemericarhaiauryahapartyhorahihai
+Example Output
+part
+pawripartipawri
+yemaihuyemericarhaiauryahapawrihorahihai
+
+Solution->
+#include<bits/stdc++.h>
+typedef long long int ll;
+#define mod 1000000007
+using namespace std;
+#define IOS ios::sync_with_stdio(0);
+#define endl "\n"
+
+int main(){
+    IOS;
+    ll t;cin>>t;
+    for(ll i=1;i<=t;i++){ //test-cases count
+    string s;
+    cin>>s;
+    ll l = s.size();
+    for(ll i=0;i<l;i++){
+        if(s[i-2]=='p' && s[i-1]=='a' && s[i]=='r' && s[i+1]=='t' && s[i+2]=='y'){
+            s[i]='w';
+            s[i+1]='r';
+            s[i+2]='i';
+            i+=2;
+        }
+    }
+    cout<<s;
+    cout<<endl;
+}
+return 0;
+}
+
+
