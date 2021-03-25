@@ -1,0 +1,62 @@
+Codechef march cookoff
+(NSBM)
+2)matrix xor
+Chef has a tasty ingredient ― an integer K. He defines a tasty matrix A with N rows (numbered 1 through N) and M columns (numbered 1 through M) as Ai,j=K+i+j for each valid i,j.
+
+Currently, Chef is busy in the kitchen making this tasty matrix. Help him find the bitwise XOR of all elements of this matrix.
+
+Input
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of each test case contains three space-separated integers N, M and K.
+Output
+For each test case, print a single line containing one integer ― the bitwise XOR of all elements of the tasty matrix with the given dimensions made with the given special ingredient.
+
+Constraints
+1≤T≤105
+1≤N,M≤2⋅106
+1≤K≤109
+the sum of N over all test cases does not exceed 2⋅106
+the sum of M over all test cases does not exceed 2⋅106
+Example Input
+2
+2 2 5
+2 3 7
+Example Output
+14
+5
+Explanation
+Example case 1: The matrix is
+A=(5+1+15+2+15+1+25+2+2)=(7889).
+The XOR of all its elements is 7⊕8⊕8⊕9=14.
+
+Example case 2: The matrix is
+A=(7+1+17+2+17+1+27+2+27+1+37+2+3)=(91010111112).
+The XOR of all its elements is 9⊕10⊕11⊕10⊕11⊕12=5.
+
+Solution ->
+#include <bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+
+int main()
+{
+    ll t;cin>>t;
+    while(t--){
+        ll n,m,k;
+        cin>>n>>m>>k;
+        ll ans=0;
+        for(ll i=1;i<=n;i++){
+            if(min(i,m)%2){
+                ans^=k+i+1;
+            }
+        }
+        for(ll i=2;i<=m;i++){
+            if(min(n,m-i+1)%2){
+                ans^=k+i+n;
+            }
+        }
+        cout<<ans<<"\n";
+    }
+
+    return 0;
+}
