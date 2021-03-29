@@ -1,0 +1,33 @@
+Valid Triangles FLOW013
+Begginer codechef(SBM)
+Write a program to check whether a triangle is valid or not, when the three angles of the triangle are the inputs. A triangle is valid if the sum of all the three angles is equal to 180 degrees.
+Input
+
+3 
+40 40 100
+45 45 90
+180 1 1
+Output
+
+YES
+YES
+NO
+Constraints
+1 ≤ T ≤ 1000
+1 ≤ A,B,C ≤ 180
+
+Solution->
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+	    int a,b,c;
+	    cin>>a>>b>>c;
+	    (a+b+c==180)?cout<<"YES\n":cout<<"NO\n";
+	}
+	return 0;
+}
