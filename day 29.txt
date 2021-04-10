@@ -1,0 +1,76 @@
+Leetcode Easy (NSBM)
+20. Valid Parentheses
+
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+Example 4:
+
+Input: s = "([)]"
+Output: false
+Example 5:
+
+Input: s = "{[]}"
+Output: true
+ 
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+Solution->
+class Solution {
+public:
+    bool isValid(string s) {
+     stack<char> s1;
+        for(char ch: s)
+        {
+            switch(ch)
+            {
+                case '(':  
+                    
+                case '{': 
+                          
+                case '[':  s1.push(ch);   // falling through for all opening 
+                            break;
+                              
+                case ')': if(s1.empty() || s1.top() != '(') // if not empty or top doesn't match 
+                                return false;
+                          else
+                              s1.pop();   // else just push char into stack  
+                          break;
+                    
+                case '}': if(s1.empty() || s1.top() != '{')
+                                return false;
+                          else
+                              s1.pop();
+                          break;
+                    
+                case ']': if(s1.empty() || s1.top() != '[')
+                                return false;
+                          else
+                              s1.pop();
+                          break;   
+            }
+       }
+       
+        return s1.empty();
+    }
+};
