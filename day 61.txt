@@ -1,0 +1,58 @@
+Leetcode July Live challenge 2021
+day 27
+(PSBM)
+
+3Sum Closest
+
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+ 
+
+Constraints:
+
+3 <= nums.length <= 10^3
+-10^3 <= nums[i] <= 10^3
+-10^4 <= target <= 10^4
+
+Solution->
+class Solution {
+public:
+    int threeSumClosest(vector<int>& a, int target) {
+        int ansDiff = INT_MAX;
+        int ans =0;
+        int l = a.size();
+        if(l==3)
+            return (a[0]+a[1]+a[2]);
+        
+        sort(a.begin(),a.end());
+        
+        for(int i=0;i<l;i++){
+            int fir = i+1;
+            int sec = l-1;
+            while(fir<sec){
+                int temp = a[fir] + a[sec] + a[i];
+                
+                if(abs(target-temp)<ansDiff){
+                    ans = temp;
+                    ansDiff = abs(target-temp);
+                }
+                
+                if(temp==target)
+                    return temp;
+                else
+                    (temp>target)?sec--:fir++;
+            }  
+        }
+       
+       
+        
+     return ans;   
+    }
+};
